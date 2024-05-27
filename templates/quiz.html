@@ -14,17 +14,19 @@
     <section class="section">
       <div class="container has-text-centered">
         <div class="center is-size-1" style="margin-bottom: 20px">{{ catalan_word }}</div>
-        <div class="options" style="margin-bottom: 20px">
+        <div class="options columns is-multiline is-centered" style="margin-bottom: 20px">
           <form action="/check_answer" method="post">
             {% for translation in translations %}
-            <button
-              class="button is-primary is-light is-rounded is-shadow is-outlined"
-              type="submit"
-              name="selected_translation"
-              value="{{ translation }}"
-            >
-              {{ translation }}
-            </button>
+            <div class="column is-half-tablet is-one-quarter-desktop">
+              <button
+                class="button is-primary is-light is-rounded is-shadow is-outlined is-fullwidth"
+                type="submit"
+                name="selected_translation"
+                value="{{ translation }}"
+              >
+                {{ translation }}
+              </button>
+            </div>
             {% endfor %}
           </form>
         </div>
