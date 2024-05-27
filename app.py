@@ -8,7 +8,7 @@ app = Flask(__name__)
 def quiz():
     # Read the CSV file with Catalan and English words
     words = []
-    with open('words.csv', 'r') as file:
+    with open('assets/Advanced Catalan_1.csv', 'r') as file:
         reader = csv.reader(file)
         for row in reader:
             words.append(row)
