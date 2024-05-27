@@ -33,6 +33,10 @@
         .incorrect {
             color: red;
         }
+        .score {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -45,5 +49,11 @@
         </form>
     </div>
     <div class="message {% if message == 'NICE!' %}correct{% else %}incorrect{% endif %}">{{ message }}</div>
+    <div class="score">
+        <p>Correct Answers: {{ correct_answers }}</p>
+        <p>Incorrect Answers: {{ incorrect_answers }}</p>
+        <p>Words Seen: {{ words_seen }}</p>
+        <p>Percentage Correct: {{ percentage_correct }}%</p>
+    </div>
 </body>
 </html>
