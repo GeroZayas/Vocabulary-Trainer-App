@@ -22,14 +22,28 @@
             background-color: lightblue;
             cursor: pointer;
         }
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .correct {
+            color: green;
+        }
+        .incorrect {
+            color: red;
+        }
     </style>
 </head>
 <body>
     <div class="center">{{ catalan_word }}</div>
     <div class="options">
-        {% for translation in translations %}
-            <div class="option">{{ translation }}</div>
-        {% endfor %}
+        <form action="/check_answer" method="post">
+            {% for translation in translations %}
+                <button class="option" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
+            {% endfor %}
+        </form>
     </div>
+    <div class="message {% if message == 'NICE!' %}correct{% else %}incorrect{% endif %}">{{ message }}</div>
 </body>
 </html>
