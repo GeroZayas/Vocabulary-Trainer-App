@@ -13,11 +13,16 @@
   <body>
     <section class="section">
       <div class="container has-text-centered">
-        <div class="center is-size-1" style="margin-bottom: 20px">{{ catalan_word }}</div>
-        <div class="options columns is-multiline is-centered" style="margin-bottom: 20px">
+        <div class="center is-size-1" style="margin-bottom: 20px">
+          {{ catalan_word }}
+        </div>
+        <div
+          class="options columns is-multiline is-centered"
+          style="margin-bottom: 20px"
+        >
           <form action="/check_answer" method="post">
             {% for translation in translations %}
-            <div class="column is-half-tablet is-one-quarter-desktop">
+            <div class="pt-3">
               <button
                 class="button is-primary is-light is-rounded is-shadow is-outlined is-fullwidth"
                 type="submit"
@@ -31,16 +36,27 @@
           </form>
         </div>
         <div
-          class="message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}"
-          style="padding-top: 20px"
+          class="box message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}"
+          style="width: 30%; position: relative; margin: 20px auto"
         >
           {{ message }}
         </div>
-        <div class="score has-text-centered" style="padding-top: 20px">
-          <p>Correct Answers: {{ correct_answers }}</p>
-          <p>Incorrect Answers: {{ incorrect_answers }}</p>
-          <p>Words Seen: {{ words_seen }}</p>
-          <p>Percentage Correct: {{ percentage_correct }}%</p>
+        <div
+          class="score box has-text-centered"
+          style="width: 30%; position: relative; margin: 20px auto"
+        >
+          <p class="title is-5 has-background-primary-dark has-text-white">
+            Correct Answers: {{ correct_answers }}
+          </p>
+          <p
+            class="title is-5 title is-5 has-background-danger-dark has-text-white"
+          >
+            Incorrect Answers: {{ incorrect_answers }}
+          </p>
+          <p class="title is-5">Words Seen: {{ words_seen }}</p>
+          <p class="title is-5">
+            Percentage Correct: {{ percentage_correct }}%
+          </p>
         </div>
       </div>
     </section>
