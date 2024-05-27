@@ -1,43 +1,29 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 import csv
-
-# import os
 import random
 
 app = Flask(__name__)
 
-# Assuming vocabulary.csv is in the root directory
-VOCABULARY_FILE = "./assets/Advanced Catalan_1.csv"
-
-
-@app.route("/")
-def start_game():
-    # Load vocabulary from CSV
-    vocabulary = []
-    with open(VOCABULARY_FILE, encoding="utf-8") as csvfile:
-        reader = csv.reader(csvfile)
-        next(reader)  # Skip header
+@app.route('/')
+def quiz():
+    # Read the CSV file with Catalan and English words
+    words = []
+    with open('words.csv', 'r') as file:
+        reader = csv.reader(file)
         for row in reader:
-            vocabulary.append(row)
+            words.append(row)
 
-    # Randomly select a word
-    selected_word = random.choice(vocabulary)
-    return render_template(
-        "game.html",
-        word=selected_word[0],
-        options=[option for option in selected_word[1:] if option != selected_word[0]],
-    )
+    # Select a random word pair
+    word_pair = random.choice(words)
+    catalan_word = word_pair[0]
+    correct_translation = word_pair[1]
 
+    # Shuffle the English translations
+    translations = [pair[1] for pair in random.sample(words, 3)]
+    translations.append(correct_translation)
+    random.shuffle(translations)
 
-@app.route("/check_answer", methods=["POST"])
-def check_answer():
-    selected_option = request.form["option"]
-    correct_option = request.args.get("correct_option")
-    if selected_option == correct_option:
-        return "Correct!"
-    else:
-        return "Incorrect."
+    return render_template('quiz.html', catalan_word=catalan_word, translations=translations)
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
