@@ -24,7 +24,7 @@
             {% for translation in translations %}
             <div class="pt-3">
               <button
-                class="button is-primary is-light is-rounded is-shadow is-outlined is-fullwidth"
+                class="button is-warning is-light is-fullwidth is-rounded is-medium is-outlined"
                 type="submit"
                 name="selected_translation"
                 value="{{ translation }}"
@@ -35,26 +35,41 @@
             {% endfor %}
           </form>
         </div>
+
         <div
           class="box message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}"
-          style="width: 30%; position: relative; margin: 20px auto"
+          style="width: 70%; position: relative; margin: 20px auto"
         >
           {{ message }}
         </div>
         <div
           class="score box has-text-centered"
-          style="width: 30%; position: relative; margin: 20px auto; background: linear-gradient(to right, #00FF00, #00CC00);"
+          style="width: 70%; position: relative; margin: 20px auto"
         >
-          <p class="title is-5 has-background-primary-dark has-text-white">
+          <p
+            class="title is-5"
+            style="
+              background: linear-gradient(to right, #bff5bf, #ffffff);
+              border-radius: 15px;
+              padding: 5px;
+            "
+          >
             Correct Answers: {{ correct_answers }}
           </p>
           <p
-            class="title is-5 title is-5 has-background-danger-dark has-text-white"
+            class="title is-5 title is-5"
+            style="
+              background: linear-gradient(to right, hsl(0, 75%, 85%), #ffffff);
+              border-radius: 15px;
+              padding: 5px;
+            "
           >
             Incorrect Answers: {{ incorrect_answers }}
           </p>
-          <p class="title is-5">Words Seen: {{ words_seen }}</p>
-          <p class="title is-5">
+          <p class="title is-5" style="border-radius: 15px; padding: 5px">
+            Words Seen: {{ words_seen }}
+          </p>
+          <p class="title is-5" style="border-radius: 15px; padding: 5px">
             Percentage Correct: {{ percentage_correct }}%
           </p>
         </div>
