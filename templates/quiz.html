@@ -13,8 +13,8 @@
   <body>
     <section class="section">
       <div class="container has-text-centered">
-        <div class="center is-size-1">{{ catalan_word }}</div>
-        <div class="options">
+        <div class="center is-size-1" style="margin-bottom: 20px">{{ catalan_word }}</div>
+        <div class="options" style="margin-bottom: 20px">
           <form action="/check_answer" method="post">
             {% for translation in translations %}
             <button
@@ -34,7 +34,7 @@
         >
           {{ message }}
         </div>
-        <div class="score has-text-centered">
+        <div class="score has-text-centered" style="padding-top: 20px">
           <p>Correct Answers: {{ correct_answers }}</p>
           <p>Incorrect Answers: {{ incorrect_answers }}</p>
           <p>Words Seen: {{ words_seen }}</p>
