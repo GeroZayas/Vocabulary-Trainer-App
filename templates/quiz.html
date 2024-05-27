@@ -6,59 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalan Quiz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <style>
-        .center {
-            text-align: center;
-            font-size: 36px; /* Increased font size */
-            margin-top: 50px;
-        }
-        .options {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .option {
-            margin: 0 10px;
-            padding: 10px 20px;
-            background-color: lightblue;
-            cursor: pointer;
-            border: 1px solid #ccc; /* Added border */
-            box-shadow: 2px 2px 5px #ccc; /* Added shadow */
-        }
-        .message {
-            text-align: center;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: red;
-        }
-        .score {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <section class="section">
         <div class="container">
-            <div class="center">{{ catalan_word }}</div>
+            <div class="center is-size-1">{{ catalan_word }}</div>
             <div class="options">
                 <form action="/check_answer" method="post">
                     {% for translation in translations %}
-                        <button class="button is-primary is-light option" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
+                        <button class="button is-primary is-light option is-rounded is-shadow" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
                     {% endfor %}
                 </form>
             </div>
-            <div class="message {% if message == 'NICE!' %}correct{% else %}incorrect{% endif %}">{{ message }}</div>
-            <div class="score">
+            <div class="message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}">{{ message }}</div>
+            <div class="score has-text-centered">
                 <p>Correct Answers: {{ correct_answers }}</p>
                 <p>Incorrect Answers: {{ incorrect_answers }}</p>
                 <p>Words Seen: {{ words_seen }}</p>
-                <p>Percentage Correct: {{ percentage_correct | int }}%</p>
+                <p>Percentage Correct: {{ percentage_correct }}%</p>
             </div>
         </div>
     </section>
