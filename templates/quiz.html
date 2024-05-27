@@ -9,17 +9,17 @@
 </head>
 <body>
     <section class="section">
-        <div class="container">
+        <div class="container has-text-centered" style="padding-top: 20px;">
             <div class="center is-size-1">{{ catalan_word }}</div>
-            <div class="options">
+            <div class="options" style="padding-top: 20px;">
                 <form action="/check_answer" method="post">
                     {% for translation in translations %}
                         <button class="button is-primary is-light is-rounded is-shadow is-outlined" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
                     {% endfor %}
                 </form>
             </div>
-            <div class="message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}">{{ message }}</div>
-            <div class="score has-text-centered">
+            <div class="message has-text-centered has-text-weight-bold {% if message == 'NICE!' %}has-text-success{% else %}has-text-danger{% endif %}" style="padding-top: 20px;">{{ message }}</div>
+            <div class="score has-text-centered" style="padding-top: 20px;">
                 <p>Correct Answers: {{ correct_answers }}</p>
                 <p>Incorrect Answers: {{ incorrect_answers }}</p>
                 <p>Words Seen: {{ words_seen }}</p>
