@@ -38,7 +38,10 @@ def get_translations():
 
 @app.route("/")
 def quiz():
-    load_words("assets/Advanced Catalan_1.csv")  # Default file path
+    if selected_list:
+        load_words(f"assets/{selected_list}")
+    else:
+        load_words("assets/Advanced Catalan_1.csv")  # Default file path
     get_new_word_pair()
     translations = get_translations()
     return render_template(
