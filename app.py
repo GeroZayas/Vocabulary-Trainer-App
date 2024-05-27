@@ -94,5 +94,11 @@ def upload_file():
     return render_template("upload.html")
 
 
+@app.route("/choose_list", methods=["GET", "POST"])
+def choose_list():
+    files = os.listdir("assets")
+    return render_template("choose_list.html", files=files)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
