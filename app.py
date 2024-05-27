@@ -94,16 +94,5 @@ def upload_file():
     return render_template("upload.html")
 
 
-@app.route("/choose_list", methods=["GET", "POST"])
-def choose_list():
-    if request.method == "POST":
-        selected_list = request.form["selected_list"]
-        file_path = os.path.join("assets", selected_list)
-        load_words(file_path)
-        return "List selected successfully"
-    files = os.listdir("assets")
-    return render_template("choose_list.html", files=files)
-
-
 if __name__ == "__main__":
     app.run(debug=True)
