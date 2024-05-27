@@ -12,9 +12,10 @@ words_seen = 0
 percentage_correct = 0
 
 
-def load_words():
+def load_words(file_path):
     global words
-    with open("assets/Advanced Catalan_1.csv", "r") as file:
+    words = []
+    with open(file_path, "r") as file:
         reader = csv.reader(file)
         for row in reader:
             words.append(row)
@@ -35,7 +36,7 @@ def get_translations():
 
 @app.route("/")
 def quiz():
-    load_words()
+    load_words("assets/Advanced Catalan_1.csv")  # Default file path
     get_new_word_pair()
     translations = get_translations()
     return render_template(
@@ -77,6 +78,18 @@ def check_answer():
         words_seen=words_seen,
         percentage_correct=percentage_correct,
     )
+
+
+@app.route("/upload", methods=["POST"])
+def upload_file():
+    if request.method == "POST":
+        file = request.files["file"]
+        if file.filename == "":
+            return "No file selected"
+        if file:
+            file.save("assets/uploaded_file.csv")
+            load_words("assets/uploaded_file.csv")
+            return "File uploaded successfully"
 
 
 if __name__ == "__main__":
