@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catalan Quiz</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-    <style>
-        .option {
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            border: 1px solid #ccc;
-        }
-    </style>
 </head>
 <body>
     <section class="section">
@@ -20,7 +14,7 @@
             <div class="options">
                 <form action="/check_answer" method="post">
                     {% for translation in translations %}
-                        <button class="button is-primary is-light option is-rounded" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
+                        <button class="button is-primary is-light is-rounded is-shadow" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
                     {% endfor %}
                 </form>
             </div>
