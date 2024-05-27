@@ -80,7 +80,7 @@ def check_answer():
     )
 
 
-@app.route("/upload", methods=["POST"])
+@app.route("/upload", methods=["GET", "POST"])
 def upload_file():
     if request.method == "POST":
         file = request.files["file"]
@@ -90,6 +90,7 @@ def upload_file():
             file.save("assets/uploaded_file.csv")
             load_words("assets/uploaded_file.csv")
             return "File uploaded successfully"
+    return render_template("upload.html")
 
 
 if __name__ == "__main__":
