@@ -14,7 +14,7 @@
             <div class="options">
                 <form action="/check_answer" method="post">
                     {% for translation in translations %}
-                        <button class="button is-primary is-light is-rounded is-shadow" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
+                        <button class="button is-primary is-light is-rounded is-shadow is-outlined" type="submit" name="selected_translation" value="{{ translation }}">{{ translation }}</button>
                     {% endfor %}
                 </form>
             </div>
