@@ -42,14 +42,12 @@ def check_answer():
     if selected_translation == current_word_pair[1]:
         message = 'NICE!'
         correct_answers += 1
-        words_seen += 1
-        new_word_pair = get_new_word_pair()
-        translations = get_translations()
     else:
-        message = 'TRY AGAIN'
+        message = 'Wrong!'
         incorrect_answers += 1
-        words_seen += 1
-        translations = get_translations()
+    words_seen += 1
+    new_word_pair = get_new_word_pair()
+    translations = get_translations()
 
     percentage_correct = (correct_answers / words_seen) * 100 if words_seen > 0 else 0
 
