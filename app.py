@@ -9,6 +9,7 @@ current_word_pair = None
 correct_answers = 0
 incorrect_answers = 0
 words_seen = 0
+percentage_correct = 0
 
 def load_words():
     global words
@@ -33,11 +34,11 @@ def quiz():
     load_words()
     get_new_word_pair()
     translations = get_translations()
-    return render_template('quiz.html', catalan_word=current_word_pair[0], translations=translations, correct_answers=correct_answers, incorrect_answers=incorrect_answers, words_seen=words_seen)
+    return render_template('quiz.html', catalan_word=current_word_pair[0], translations=translations, correct_answers=correct_answers, incorrect_answers=incorrect_answers, words_seen=words_seen, percentage_correct=percentage_correct)
 
 @app.route('/check_answer', methods=['POST'])
 def check_answer():
-    global correct_answers, incorrect_answers, words_seen
+    global correct_answers, incorrect_answers, words_seen, percentage_correct
     selected_translation = request.form['selected_translation']
     if selected_translation == current_word_pair[1]:
         message = 'NICE!'
@@ -49,7 +50,7 @@ def check_answer():
     new_word_pair = get_new_word_pair()
     translations = get_translations()
 
-    percentage_correct = (correct_answers / words_seen) * 100 if words_seen > 0 else 0
+    percentage_correct = int((correct_answers / words_seen) * 100) if words_seen > 0 else 0
 
     return render_template('quiz.html', catalan_word=new_word_pair[0], translations=translations, message=message, correct_answers=correct_answers, incorrect_answers=incorrect_answers, words_seen=words_seen, percentage_correct=percentage_correct)
 
