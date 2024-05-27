@@ -11,6 +11,7 @@ correct_answers = 0
 incorrect_answers = 0
 words_seen = 0
 percentage_correct = 0
+selected_list = None
 
 
 def load_words(file_path):
@@ -96,6 +97,11 @@ def upload_file():
 
 @app.route("/choose_list", methods=["GET", "POST"])
 def choose_list():
+    global selected_list
+    if request.method == "POST":
+        selected_list = request.form["selected_list"]
+        load_words(f"assets/{selected_list}")
+        return render_template("quiz.html")
     files = os.listdir("assets")
     return render_template("choose_list.html", files=files)
 
