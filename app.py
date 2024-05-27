@@ -12,6 +12,7 @@ incorrect_answers = 0
 words_seen = 0
 percentage_correct = 0
 selected_list = None
+uploaded_file_name = None
 
 
 def load_words(file_path):
@@ -87,13 +88,15 @@ def check_answer():
 
 @app.route("/upload", methods=["GET", "POST"])
 def upload_file():
+    global uploaded_file_name
     if request.method == "POST":
         file = request.files["file"]
         if file.filename == "":
             return "No file selected"
         if file:
-            file.save("assets/uploaded_file.csv")
-            load_words("assets/uploaded_file.csv")
+            uploaded_file_name = file.filename
+            file.save(f"assets/{uploaded_file_name}")
+            load_words(f"assets/{uploaded_file_name}")
             return "File uploaded successfully"
     return render_template("upload.html")
 
