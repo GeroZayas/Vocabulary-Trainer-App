@@ -53,7 +53,7 @@
         <p>Correct Answers: {{ correct_answers }}</p>
         <p>Incorrect Answers: {{ incorrect_answers }}</p>
         <p>Words Seen: {{ words_seen }}</p>
-        <p>Percentage Correct: {{ percentage_correct }}%</p>
+        <p>Percentage Correct: {{ percentage_correct | int }}%</p>
     </div>
 </body>
 </html>
