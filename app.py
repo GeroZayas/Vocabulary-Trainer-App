@@ -61,10 +61,14 @@ def check_answer():
     global correct_answers, incorrect_answers, words_seen, percentage_correct
     selected_translation = request.form["selected_translation"]
     if selected_translation == current_word_pair[1]:
-        message = "NICE!"
+        message = random.choice(
+            ["NICE!", "GOOD Job!", "You, genius!", "I mean... you goood!"]
+        )
         correct_answers += 1
     else:
-        message = "Wrong!"
+        message = random.choice(
+            ["Wrong!", "Not quite!", "Well, not exactly", "You can do better!"]
+        )
         incorrect_answers += 1
     words_seen += 1
     new_word_pair = get_new_word_pair()
