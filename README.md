@@ -1,4 +1,4 @@
-# Vocabulary Trainer
+# <img title="a title" alt="Alt text" src="./static/images/languages.png" style="width: 30px;"> Vocabulary Trainer
 
 The Vocabulary Trainer is a tool that helps you learn and practice vocabulary in a fun and interactive way.
 
@@ -8,12 +8,12 @@ A randomly selected word from the list is shown to you and you have to choose be
 
 There's also a scoreboard that lets you know how many correct/incorrect answers you have had in the practice and the percentage of accuracy.
 
-## Roadmap
+## 🗺️ Roadmap
 
 - [ ] User profile creation
 - [ ] Save user profile data
 - [ ] Add more practice modes
 
-## Fixes
+## ❌ Fixes
 
 - [ ] Fix unresponsive title bug
