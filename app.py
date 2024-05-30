@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import csv
 import random
 import os
@@ -11,11 +11,20 @@ correct_answers = 0
 incorrect_answers = 0
 words_seen = 0
 percentage_correct = 0
-selected_list = None
+selected_list = "Advanced Catalan"
 uploaded_file_name = None
 
 
 def load_words(file_path):
+    """
+    Load words from a CSV file into the global 'words' list.
+
+    Parameters:
+    file_path (str): The file path to the CSV file containing the words.
+
+    Returns:
+    None
+    """
     global words
     words = []
     with open(file_path, "r") as file:
@@ -42,12 +51,13 @@ def quiz():
     if selected_list:
         load_words(f"assets/{selected_list}")
     else:
-        load_words("assets/Advanced Catalan_1.csv")  # Default file path
+        load_words("assets/Advanced Catalan")  # Default file path
     get_new_word_pair()
     translations = get_translations()
     return render_template(
         "quiz.html",
-        catalan_word=current_word_pair[0],
+        selected_list=selected_list,
+        target_word=current_word_pair[0],
         translations=translations,
         correct_answers=correct_answers,
         incorrect_answers=incorrect_answers,
@@ -58,7 +68,7 @@ def quiz():
 
 @app.route("/check_answer", methods=["POST"])
 def check_answer():
-    global correct_answers, incorrect_answers, words_seen, percentage_correct
+    global correct_answers, incorrect_answers, words_seen, percentage_correct, selected_list
     selected_translation = request.form["selected_translation"]
     if selected_translation == current_word_pair[1]:
         message = random.choice(
@@ -80,7 +90,8 @@ def check_answer():
 
     return render_template(
         "quiz.html",
-        catalan_word=new_word_pair[0],
+        selected_list=selected_list,
+        target_word=new_word_pair[0],
         translations=translations,
         message=message,
         correct_answers=correct_answers,
@@ -111,7 +122,7 @@ def choose_list():
     if request.method == "POST":
         selected_list = request.form["selected_list"]
         load_words(f"assets/{selected_list}")
-        return render_template("quiz.html")
+        return redirect("/")
     files = os.listdir("assets")
     return render_template("choose_list.html", files=files)
 

@@ -13,8 +13,15 @@
   <body>
     <section class="section">
       <div class="container has-text-centered">
+        <div
+          class="center is-size-3 color-text-danger"
+          style="color: chocolate"
+        >
+          {{selected_list}}
+          <br />
+        </div>
         <div class="center is-size-1" style="margin-bottom: 20px">
-          {{ catalan_word }}
+          {{ target_word }}
         </div>
         <div
           class="options columns is-multiline is-centered"
@@ -58,6 +65,22 @@
           <p class="title is-6" style="border-radius: 15px">
             Percentage Correct: {{ percentage_correct }}%
           </p>
+        </div>
+        <div class="container has-text-centered is-one-fifth">
+          <button
+            class="button is-primary is-light is-rounded is-outlined has-shadow"
+            type="button"
+            onclick="window.location.href='/choose_list';"
+          >
+            Choose list
+          </button>
+          <button
+            class="button is-primary is-light is-rounded is-outlined has-shadow"
+            type="button"
+            onclick="window.location.href='/upload';"
+          >
+            Upload new list
+          </button>
         </div>
       </div>
     </section>
