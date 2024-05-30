@@ -13,4 +13,7 @@ There's also a scoreboard that lets you know how many correct/incorrect answers 
 - [ ] User profile creation
 - [ ] Save user profile data
 - [ ] Add more practice modes
-- [ ]
+
+## Fixes
+
+- [ ] Fix unresponsive title bug
