@@ -15,14 +15,14 @@
       <div class="container has-text-centered">
         <h1 class="title">Choose Word List</h1>
         <form action="/choose_list" method="post">
-          <div class="select is-fullwidth">
+          <div class="select is-fullwidth" style="margin-bottom: 20px;">
             <select name="selected_list">
               {% for file in files %}
               <option value="{{ file }}">{{ file }}</option>
               {% endfor %}
             </select>
           </div>
-          <div class="field">
+          <div class="field" style="margin-bottom: 20px;">
             <div class="control">
               <button class="button is-primary" type="submit">
                 Select List
