@@ -1,90 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vocabulary Trainer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
-    />
-  </head>
-  <body>
-    {% include '/navbar.html' %}
-    <!-- THIS IS A WORKING MVP -->
-    <section class="section">
-      <div class="container has-text-centered">
-        <div
-          class="center is-size-3 color-text-danger"
-          style="color: chocolate"
+{% extends "base.html" %} {% block title %}Vocabulary Trainer{% endblock %} {%
+block content %}
+<div class="container has-text-centered">
+  <div class="center is-size-3 color-text-danger" style="color: chocolate">
+    {{selected_list}}<br />
+  </div>
+  <div class="center is-size-1" style="margin-bottom: 20px">
+    {{ target_word }}
+  </div>
+  <div
+    class="options columns is-multiline is-centered"
+    style="margin-bottom: 20px"
+  >
+    <form action="/check_answer" method="post">
+      {% for translation in translations %}
+      <div class="pt-3">
+        <button
+          class="button is-warning is-light is-fullwidth is-rounded is-medium is-outlined has-shadow"
+          type="submit"
+          name="selected_translation"
+          value="{{ translation }}"
         >
-          {{selected_list}}
-          <br />
-        </div>
-        <div class="center is-size-1" style="margin-bottom: 20px">
-          {{ target_word }}
-        </div>
-        <div
-          class="options columns is-multiline is-centered"
-          style="margin-bottom: 20px"
-        >
-          <form action="/check_answer" method="post">
-            {% for translation in translations %}
-            <div class="pt-3">
-              <button
-                class="button is-warning is-light is-fullwidth is-rounded is-medium is-outlined has-shadow"
-                type="submit"
-                name="selected_translation"
-                value="{{ translation }}"
-              >
-                {{ translation }}
-              </button>
-            </div>
-            {% endfor %}
-          </form>
-        </div>
-
-        <div
-          class="box is-size-4 message has-text-centered has-text-weight-bold {% if message in ['NICE!', 'GOOD Job!', 'You, genius!', 'I mean... you goood!'] %}has-text-success{% else %}has-text-danger{% endif %}"
-          style="width: 70%; position: relative; margin: 20px auto"
-        >
-          {{ message }}
-        </div>
-        <div
-          class="score box has-text-centered"
-          style="width: 70%; position: relative; margin: 20px auto"
-        >
-          <p class="title is-6" style="border-radius: 15px; color: green">
-            Correct Answers: {{ correct_answers }}
-          </p>
-          <p class="title is-6" style="border-radius: 15px; color: red">
-            Incorrect Answers: {{ incorrect_answers }}
-          </p>
-          <p class="title is-6" style="border-radius: 15px">
-            Words Seen: {{ words_seen }}
-          </p>
-          <p class="title is-6" style="border-radius: 15px">
-            Percentage Correct: {{ percentage_correct }}%
-          </p>
-        </div>
-        <div class="container has-text-centered is-one-fifth">
-          <button
-            class="button is-primary is-light is-rounded is-outlined has-shadow"
-            type="button"
-            onclick="window.location.href='/choose_list';"
-          >
-            Choose list
-          </button>
-          <button
-            class="button is-primary is-light is-rounded is-outlined has-shadow"
-            type="button"
-            onclick="window.location.href='/upload';"
-          >
-            Upload new list
-          </button>
-        </div>
+          {{ translation }}
+        </button>
       </div>
-    </section>
-  </body>
-</html>
+      {% endfor %}
+    </form>
+  </div>
+  <div
+    class="box is-size-4 message has-text-centered has-text-weight-bold {% if message in ['NICE!', 'GOOD Job!', 'You, genius!', 'I mean... you goood!'] %}has-text-success{% else %}has-text-danger{% endif %}"
+    style="width: 70%; position: relative; margin: 20px auto"
+  >
+    {{ message }}
+  </div>
+  <div
+    class="score box has-text-centered"
+    style="width: 70%; position: relative; margin: 20px auto"
+  >
+    <p class="title is-6" style="border-radius: 15px; color: green">
+      Correct Answers: {{ correct_answers }}
+    </p>
+    <p class="title is-6" style="border-radius: 15px; color: red">
+      Incorrect Answers: {{ incorrect_answers }}
+    </p>
+    <p class="title is-6" style="border-radius: 15px">
+      Words Seen: {{ words_seen }}
+    </p>
+    <p class="title is-6" style="border-radius: 15px">
+      Percentage Correct: {{ percentage_correct }}%
+    </p>
+  </div>
+  <div class="container has-text-centered is-one-fifth">
+    <button
+      class="button is-primary is-light is-rounded is-outlined has-shadow"
+      type="button"
+      onclick="window.location.href='/choose_list';"
+    >
+      Choose list
+    </button>
+    <button
+      class="button is-primary is-light is-rounded is-outlined has-shadow"
+      type="button"
+      onclick="window.location.href='/upload';"
+    >
+      Upload new list
+    </button>
+  </div>
+</div>
+{% endblock %}

@@ -16,15 +16,6 @@ uploaded_file_name = None
 
 
 def load_words(file_path):
-    """
-    Load words from a CSV file into the global 'words' list.
-
-    Parameters:
-    file_path (str): The file path to the CSV file containing the words.
-
-    Returns:
-    None
-    """
     global words
     words = []
     with open(file_path, "r") as file:
@@ -48,10 +39,11 @@ def get_translations():
 
 @app.route("/")
 def quiz():
+    global selected_list
     if selected_list:
         load_words(f"assets/{selected_list}")
     else:
-        load_words("assets/Advanced Catalan")  # Default file path
+        load_words("assets/Advanced Catalan")
     get_new_word_pair()
     translations = get_translations()
     return render_template(
@@ -68,7 +60,7 @@ def quiz():
 
 @app.route("/check_answer", methods=["POST"])
 def check_answer():
-    global correct_answers, incorrect_answers, words_seen, percentage_correct, selected_list
+    global correct_answers, incorrect_answers, words_seen, percentage_correct
     selected_translation = request.form["selected_translation"]
     if selected_translation == current_word_pair[1]:
         message = random.choice(
