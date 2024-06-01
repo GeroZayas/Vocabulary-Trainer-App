@@ -15,7 +15,7 @@
       <div class="container has-text-centered">
         <h1 class="title">Choose Word List</h1>
         <form action="/choose_list" method="post">
-          <div class="select is-fullwidth" style="margin-bottom: 20px;">
+          <div class="select is-fullwidth" style="margin-bottom: 20px; width: 60%;">
             <select name="selected_list">
               {% for file in files %}
               <option value="{{ file }}">{{ file }}</option>
