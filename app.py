@@ -119,5 +119,23 @@ def choose_list():
     return render_template("choose_list.html", files=files)
 
 
+@app.route("/create")
+def create_list():
+    return render_template("create_list.html")
+
+
+@app.route("/save_list", methods=["POST"])
+def save_list():
+    list_name = request.form["list_name"]
+    word_pairs = request.form["word_pairs"].split("\n")
+    file_path = f"assets/{list_name}.csv"
+    with open(file_path, "w", newline="") as file:
+        writer = csv.writer(file)
+        for pair in word_pairs:
+            word, translation = pair.strip().split(",")
+            writer.writerow([word, translation])
+    return redirect("/choose_list")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
