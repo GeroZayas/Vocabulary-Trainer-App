@@ -25,7 +25,12 @@
     <div class="field" style="margin-top: 20px">
       <label class="label">Continue from previous list:</label>
       <div class="control">
-        <input class="input" type="text" name="previous_list" placeholder="Enter the name of the previous list to continue from">
+        <select name="previous_list">
+          <option value="">Select a previous list</option>
+          {% for file in files %}
+            <option value="{{ file }}">{{ file }}</option>
+          {% endfor %}
+        </select>
       </div>
     </div>
   </form>
