@@ -16,4 +16,4 @@
 
 ## ❌ Fixes
 
-- [ ] Fix unresponsive title bug
+- [ ] Fix unresponsive long translations bigger than button

@@ -1,20 +1,30 @@
 <!-- templates/create_list.html -->
-{% extends "base.html" %} 
-{% block title %}Create Word List{% endblock %} 
-{% block content %}
+{% extends "base.html" %} {% block title %}Create Word List{% endblock %} {%
+block content %}
 <div class="container has-text-centered">
   <h1 class="title">Create Word List</h1>
   <form action="/save_list" method="post">
     <div class="field" style="margin-bottom: 20px">
       <label class="label">Name of the List:</label>
       <div class="control">
-        <input class="input" type="text" name="list_name" placeholder="Enter the name of the list" required>
+        <input
+          class="input"
+          type="text"
+          name="list_name"
+          placeholder="Enter the name of the list"
+          required
+        />
       </div>
     </div>
     <div class="field" style="margin-bottom: 20px">
       <label class="label">Words and Translations:</label>
       <div class="control">
-        <textarea class="textarea" name="word_pairs" placeholder="Enter word and translation pairs (one per line)" required></textarea>
+        <textarea
+          class="textarea"
+          name="word_pairs"
+          placeholder="Enter word and translation pairs (one per line)"
+          required
+        ></textarea>
       </div>
     </div>
     <div class="field" style="margin-top: 20px">
@@ -28,7 +38,7 @@
         <select name="previous_list">
           <option value="">Select a previous list</option>
           {% for file in files %}
-            <option value="{{ file }}">{{ file }}</option>
+          <option value="{{ file }}">{{ file }}</option>
           {% endfor %}
         </select>
       </div>

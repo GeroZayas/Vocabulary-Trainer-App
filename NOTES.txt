@@ -1,3 +1,5 @@
-* This repository is private for now
 
+
+
+* This repository is public now
 * Add Bulma css to project ✅
