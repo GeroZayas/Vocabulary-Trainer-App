@@ -6,7 +6,7 @@ import os
 app = Flask(__name__)
 
 words = []
-current_word_pair = None
+current_word_pair = ["one", "uno"]
 correct_answers = 0
 incorrect_answers = 0
 words_seen = 0

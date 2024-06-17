@@ -1,26 +1,26 @@
 <!-- templates/choose_list.html -->
 {% extends "base.html" %} {% block title %}Choose Word List{% endblock %} {%
 block content %}
-<div class="container has-text-centered">
-  <h1 class="title">Choose Word List</h1>
+<div class="">
+  <h1 class="">Choose Word List</h1>
   <form action="/choose_list" method="post">
-    <div class="select is-fullwidth" style="margin-bottom: 20px; width: 60%">
+    <div class="" style="margin-bottom: 20px; width: 60%">
       <select name="selected_list">
         {% for file in files %}
         <option value="{{ file }}">{{ file }}</option>
         {% endfor %}
       </select>
     </div>
-    <div class="field" style="margin-bottom: 20px">
-      <div class="control">
-        <button class="button is-primary" type="submit">Select List</button>
+    <div class="" style="margin-bottom: 20px">
+      <div class="">
+        <button class="" type="submit">Select List</button>
       </div>
     </div>
   </form>
   <form action="/create" method="get">
-    <div class="field" style="margin-bottom: 20px">
-      <div class="control">
-        <button class="button is-primary" type="submit">Create New List</button>
+    <div class="" style="margin-bottom: 20px">
+      <div class="">
+        <button class="" type="submit">Create New List</button>
       </div>
     </div>
   </form>

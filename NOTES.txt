@@ -2,4 +2,3 @@
 
 
 * This repository is public now
-* Add Bulma css to project ✅
