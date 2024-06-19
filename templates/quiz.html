@@ -1,8 +1,12 @@
 {% extends "base.html" %} {% block title %}Vocabulary Trainer{% endblock %} {%
 block content %}
 <div class="container mx-auto px-4>
+  <!-- SELECTED LIST -->
   <div class="" style="color: chocolate">{{selected_list}}<br /></div>
+  <!-- TARGET WORD-->
   <div class="" style="margin-bottom: 20px">{{ target_word }}</div>
+  
+  <!-- CHECK ANSWER FORM -->
   <div class="" style="margin-bottom: 20px">
     <form action="/check_answer" method="post">
       {% for translation in translations %}
@@ -21,13 +25,17 @@ block content %}
     </form>
   </div>
 
+  <!-- MESSAGE BASED ON USER'S SELECTION -->
   <div class="" style="">{{ message }}</div>
+
   <div class="" style="">
     <p class="" style="">Correct Answers: {{ correct_answers }}</p>
     <p class="" style="">Incorrect Answers: {{ incorrect_answers }}</p>
     <p class="" style="">Words Seen: {{ words_seen }}</p>
     <p class="" style="">Percentage Correct: {{ percentage_correct }}%</p>
   </div>
+
+  <!-- CHOOSE LIST BUTTON -->
   <div class="">
     <button
       class=""
@@ -36,6 +44,9 @@ block content %}
     >
       Choose list
     </button>
+
+
+    <!-- UPLOAD NEW LIST BUTTON -->
     <button class="" type="button" onclick="window.location.href='/upload';">
       Upload new list
     </button>

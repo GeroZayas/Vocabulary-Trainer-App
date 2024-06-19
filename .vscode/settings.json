@@ -1,0 +1,30 @@
+{
+    "dimmer.enabled": true,
+    "editor.tokenColorCustomizations": {
+        "[Github Light Theme]": {
+            "textMateRules": [
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#0c7a0c"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "fontStyle": "bold",
+                        "foreground": "#bd7b00"
+                    }
+                },
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "fontStyle": "bold italic"
+                    }
+                }
+            ]
+        },
+        "comments": "",
+        "textMateRules": []
+    }
+}
