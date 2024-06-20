@@ -82,7 +82,9 @@ def check_answer():
 
     return render_template(
         "quiz.html",
-        selected_list=selected_list,
+        selected_list=(
+            selected_list[:-4] if selected_list.endswith("csv") else selected_list
+        ),
         target_word=new_word_pair[0],
         translations=translations,
         message=message,

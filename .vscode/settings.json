@@ -1,5 +1,5 @@
 {
-    "dimmer.enabled": true,
+    "dimmer.enabled": false,
     "editor.tokenColorCustomizations": {
         "[Github Light Theme]": {
             "textMateRules": [
